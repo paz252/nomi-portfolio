@@ -36,12 +36,12 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          cd frontend
+          cd nomi-frontend
           npm ci
 
       - name: Compile Distribution Assets (Vite Build)
         run: |
-          cd frontend
+          cd nomi-frontend
           npm run build
 
       - name: Setup GitHub Pages Deployment Context
@@ -50,7 +50,7 @@ jobs:
       - name: Upload Production Bundles as Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './frontend/dist' # Points directly into Vite's production output subfolder
+          path: './nomi-frontend/dist' # Points directly into Vite's production output subfolder
 
       - name: Deploy Production Artifact to GitHub Pages Cloud
         id: deployment
