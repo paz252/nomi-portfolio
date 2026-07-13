@@ -38,7 +38,13 @@ public class VectorStoreConfig {
             List<Document> rawDocuments = textReader.get();
 
             // Step 2: Transform text chunks cleanly into tokens
-            TokenTextSplitter textSplitter = new TokenTextSplitter(800, 500, 10, 10000, true, null);
+            TokenTextSplitter textSplitter = TokenTextSplitter.builder()
+                                                .withChunkSize(800)
+                                                .withMinChunkSizeChars(500)
+                                                .withMinChunkLengthToEmbed(10)
+                                                .withMaxNumChunks(10000)
+                                                .withKeepSeparator(true)
+                                                .build();
             List<Document> splitDocuments = textSplitter.apply(rawDocuments);
 
             // Step 3: Load into SimpleVectorStore (Automatically triggers EmbeddingModel
@@ -50,6 +56,7 @@ public class VectorStoreConfig {
 
         } catch (Exception e) {
             System.err.println("Failed to complete data ingestion from markdown file!" + e.getMessage());
+            throw new IllegalStateException("Vector store ingestion failed — app cannot serve grounded answers", e);
         }
 
         return vectorStore;
