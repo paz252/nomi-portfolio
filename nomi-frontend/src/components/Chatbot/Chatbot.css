@@ -75,7 +75,6 @@
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
   background-color: var(--chat-bg-elevated) !important;
 }
 
@@ -123,7 +122,7 @@
 .chatbot-main-container .ai-msg {
   background-color: var(--chat-bubble-ai);
   align-self: flex-start;
-  max-width: 80%;
+  max-width: 100%;
   border: 1px solid var(--chat-border);
   border-left: 0.3rem solid var(--chat-accent);
   color: var(--chat-text);
@@ -133,9 +132,30 @@
   background-color: var(--chat-bubble-user);
   color: var(--chat-text);
   align-self: flex-end;
-  max-width: 80%;
+  max-width: 100%;
   border: 1px solid var(--chat-border);
   border-right: 0.3rem solid var(--chat-accent-user);
+}
+
+.message-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.message-bubble {
+  margin-bottom: 0;
+}
+
+.message-timestamp {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  color: var(--chat-text-muted);
+}
+
+.message-block:hover .message-timestamp {
+  opacity: 1;
+  visibility: visible;
 }
 
 .chatbot-main-container .text-muted {

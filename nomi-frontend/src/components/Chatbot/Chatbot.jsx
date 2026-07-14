@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import api from '../../api/axiosConfig';
 import './Chatbot.css';
 
-export default function Chatbot() {
+export default function Chatbot({ guestName }) {
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -24,7 +24,7 @@ export default function Chatbot() {
 
       recognition.onstart = () => setIsListening(true);
       recognition.onend = () => setIsListening(false);
-      
+
       recognition.onresult = (event) => {
         const transcript = event.results[0][0].transcript;
         setInputValue(transcript);
@@ -51,6 +51,10 @@ export default function Chatbot() {
     }
   };
 
+  const getFormattedTimestamp = () => {
+    return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  };
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -62,7 +66,7 @@ export default function Chatbot() {
   const handleSendMessage = async (message) => {
     if (!message.trim()) return;
 
-    const userMessage = { type: 'user', text: message };
+    const userMessage = { type: 'user', text: message, timestamp: getFormattedTimestamp() };
     setMessages(prev => [...prev, userMessage]);
     setInputValue('');
     setIsLoading(true);
@@ -70,9 +74,10 @@ export default function Chatbot() {
 
     try {
       const response = await api.post("/chat", { message: message });
-      const aiMessage = { 
-        type: 'ai', 
-        text: response.data?.response || 'Sorry, I could not process your request.' 
+      const aiMessage = {
+        type: 'ai',
+        text: response.data?.response || 'Sorry, I could not process your request.',
+        timestamp: getFormattedTimestamp(),
       };
       setMessages(prev => [...prev, aiMessage]);
     } catch (error) {
@@ -82,6 +87,7 @@ export default function Chatbot() {
         {
           type: "ai",
           text: `⚠️ Backend node may be initializing from deep-standby. Please resend message shortly.`,
+          timestamp: getFormattedTimestamp(),
         },
       ]);
     } finally {
@@ -115,28 +121,31 @@ export default function Chatbot() {
         )}
 
         {messages.map((msg, index) => (
-          <div
-            key={index}
-            className={`${msg.type === 'ai' ? 'ai-msg' : 'user-msg'} p-3 mb-3 rounded shadow-sm`}
-          >
-            <div className="text-uppercase tracking-wider font-monospace text-muted small mb-1 opacity-75">
-              {msg.type === 'ai' ? 'Nomi' : 'You'}
+          console.log(msg),
+          <div key={index} className="message-block mb-3">
+            <div className={`${msg.type === 'ai' ? 'ai-msg' : 'user-msg'} p-3 rounded shadow-sm message-bubble`}>
+              <div className="text-uppercase tracking-wider font-monospace text-muted small opacity-75">
+                {msg.type === 'ai' ? 'Nomi' : guestName || 'You'}
+              </div>
+              <div className="markdown-content-body text-break">
+                {msg.type === 'ai' ? (
+                  <ReactMarkdown>{msg.text}</ReactMarkdown>
+                ) : (
+                  <p className="m-0 whitespace-pre-wrap">{msg.text}</p>
+                )}
+              </div>
             </div>
-            <div className="markdown-content-body text-break">
-              {msg.type === 'ai' ? (
-                <ReactMarkdown>{msg.text}</ReactMarkdown>
-              ) : (
-                <p className="m-0 whitespace-pre-wrap">{msg.text}</p>
-              )}
+            <div className={`${msg.type === 'ai' ? 'text-start' : 'text-end'} message-timestamp text-muted small`}>
+              {msg.timestamp}
             </div>
           </div>
         ))}
 
         {/* Dynamic State Feedback */}
         {isLoading && (
-          <div className="ai-msg p-3 mb-3 rounded shadow-sm bg-white d-inline-block">
+          <div className="ai-msg p-3 mb-3 rounded shadow-sm d-inline-block">
             <div className="text-uppercase tracking-wider font-monospace text-muted small mb-2 opacity-75">
-              Parsing Context Store Clusters...
+              Retrieving relevant chunks...
             </div>
             <span className="typing-indicator">
               <span></span>
