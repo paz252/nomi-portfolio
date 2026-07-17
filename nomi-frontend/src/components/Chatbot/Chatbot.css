@@ -435,6 +435,7 @@
 
   .action-buttons {
     flex-wrap: wrap;
+    justify-content: center;
   }
 }
 
@@ -451,5 +452,17 @@
   .chatbot-main-container .ai-msg,
   .chatbot-main-container .user-msg {
     max-width: 100%;
+  }
+
+  .action-buttons {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .action-buttons {
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
