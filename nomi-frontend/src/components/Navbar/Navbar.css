@@ -78,6 +78,10 @@
     border: none;
   }
 
+  .download-text {
+    display: none;
+  }
+
   .burger-btn {
     display: flex;
   }

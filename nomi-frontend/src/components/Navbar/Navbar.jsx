@@ -94,10 +94,11 @@ export default function Navbar() {
 
       <a href={resumePDF}
         download="Aman_Saxena_Resume.pdf"
-        className="btn btn-sm btn-outline-light d-flex align-items-center gap-2 fw-bold download-resume-btn"
+        className="btn btn-sm btn-outline-light d-flex align-items-center fw-bold gap-1 download-resume-btn"
       >
         <i className="bi bi-download"></i>
-        <span>Download Resume</span>
+        <span className="download-text">Download</span>
+        <span>Resume</span>
       </a>
 
       {/* Mobile dropdown menu */}
