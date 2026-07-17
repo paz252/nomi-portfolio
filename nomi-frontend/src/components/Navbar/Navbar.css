@@ -61,21 +61,12 @@
     position: relative; /* containing block for .mobile-menu dropdown */
   }
 
-  .navbar-brand {
-    justify-self: start;
-  }
-
   .nav-pill-group {
     display: none;
   }
 
   .burger-btn {
     display: flex;
-    justify-self: center;
-  }
-
-  .guest-info {
-    justify-self: end;
   }
 
   .mobile-menu {

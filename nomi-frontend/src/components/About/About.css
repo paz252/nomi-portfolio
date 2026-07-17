@@ -186,7 +186,9 @@
 }
 
 @keyframes bounceArrow {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
 
@@ -228,12 +230,12 @@
   overflow: hidden;
 }
 
-.edu-inst{
+.edu-inst {
   color: #8b95a1;
   font-weight: bold;
 }
 
-.edu-agg{
+.edu-agg {
   color: #a5b4fc;
   font-weight: bold;
 }
@@ -412,8 +414,6 @@
 
 @media (max-width: 992px) {
 
-  @media (max-width: 992px) {
-
   .hero-grid {
     grid-template-columns: 1fr;
   }
@@ -436,7 +436,7 @@
     align-items: center;
   }
 }
-}
+
 
 @media (max-width: 768px) {
 
@@ -449,7 +449,7 @@
   }
 
   .avatar {
-    height: 250px;
+    height: 225px;
     width: 50%;
     max-width: 260px;
     margin: 0 auto;
@@ -461,5 +461,14 @@
 
   .about-section {
     padding: 50px 20px;
+  }
+}
+
+@media (max-width: 460px) {
+  .avatar {
+    height: 225px;
+    width: 50%;
+    max-width: 260px;
+    margin: 0 auto;
   }
 }

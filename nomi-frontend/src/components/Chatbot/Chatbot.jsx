@@ -8,14 +8,13 @@ import ChatInput from "./ChatInput";
 import MessageList from "./MessageList";
 import ActionButtons from "./ActionButtons";
 
-import useLocalStorage from "./hooks/useLocalStorage";
 import useSpeechRecognition from "./hooks/useSpeechRecognition";
 
 import { copyText, getTimestamp } from "./utils";
 import MetallicText from "../utils/MetallicText";
 
 export default function Chatbot({ guestName }) {
-  const [messages, setMessages] = useLocalStorage("nomiChatMessages", []);
+  const [messages, setMessages] = useState([]);
 
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -87,11 +86,6 @@ export default function Chatbot({ guestName }) {
     handleSendMessage(inputValue);
   };
 
-  const handleClear = () => {
-    setMessages([]);
-    setInputValue("");
-  };
-
   const handleCopy = async (text, index) => {
     try {
       await copyText(text);
@@ -110,7 +104,7 @@ export default function Chatbot({ guestName }) {
 
       <div className="chatbot-header text-center pb-3">
         <div className="chat-welcome-title">
-          Hello! I'm <MetallicText speed={6}>Aman Saxena</MetallicText>
+          Hello! I'm <MetallicText speed={6}>Aman</MetallicText>
         </div>
       </div>
 
@@ -130,9 +124,9 @@ export default function Chatbot({ guestName }) {
         </div>
 
         <div className="chat-footer">
-          {!isLoading && messages.at(-1)?.type === "ai" && (
+          {(messages.length === 0 || (!isLoading && messages.at(-1)?.type === "ai")) && (
             <div className="chat-action-bar">
-              <ActionButtons onClear={handleClear} />
+              <ActionButtons onSend={handleSendMessage} isLoading={isLoading} />
             </div>
           )}
 

@@ -17,7 +17,7 @@ export default function Message({
         } p-3 rounded shadow-sm message-bubble`}
       >
         <div className="text-uppercase tracking-wider font-monospace text-muted small opacity-75">
-          {isAI ? "NOMI" : guestName || "You"}
+          {isAI ? "Aman" : guestName || "You"}
         </div>
 
         <div className="markdown-content-body text-break">

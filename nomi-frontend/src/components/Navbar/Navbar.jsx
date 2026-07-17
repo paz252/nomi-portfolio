@@ -55,7 +55,7 @@ export default function Navbar({ guestName }) {
 
   return (
   <nav
-    className="navbar sticky-top navbar-expand-lg py-3 ps-5 text-white fw-bold d-flex justify-content-between align-items-center"
+    className="navbar sticky-top navbar-expand-lg py-3 ps-3 text-white fw-bold d-flex justify-content-between align-items-center"
     style={{
       background: "linear-gradient(135deg, #07070a 0%, #0f1116 100%)",
       height: "8vh",
@@ -92,7 +92,7 @@ export default function Navbar({ guestName }) {
       <span></span>
     </button>
 
-    <div className="d-flex align-items-center gap-2 pe-5 guest-info">
+    <div className="d-flex align-items-center gap-2 pe-3 guest-info">
       {guestName && (
         <>
           <span

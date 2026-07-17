@@ -72,7 +72,7 @@ export default function Skills() {
     return (
         <section className="skills-section pt-5 pb-5">
             <h1 className="skills-title text-center">
-                <MetallicText speed={6}>Technologies</MetallicText> I Work With
+                My <MetallicText speed={6}>Skills</MetallicText>
             </h1>
 
             <div className="skills-marquee pt-5">
