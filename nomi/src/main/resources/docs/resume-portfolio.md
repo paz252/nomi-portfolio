@@ -97,20 +97,34 @@ Highly competent Java J2EE Developer with over 4.5 years of professional experie
 
 ---
 
+## AVAILABILITY STATEMENT
+- Open to new opportunities. Actively seeking senior roles with greater scope and ownership.
+- Flexibility to relocate, location is not a constraint for the right opportunity.
+
+---
+
+## CURRENT PACKAGE DETAILS AND EXPECTATION
+- 11.1 LPA
+- Expecting 16-18 LPA or above
+
 ## EDUCATION & ACADEMIC CREDENTIALS
 - **Post Graduate Diploma in Advanced Computing (PG-DAC)**
   - *Institution:* Centre for Development of Advanced Computing (C-DAC), Pune
   - *Year of Completion:* 2021
+  - *Aggregate:* 83.17%
   - *Focus Area:* Advanced Software Development Mechanics, Enterprise Architecture, Data Structures, and Database Systems.
 - **Bachelor of Technology (B.Tech) in Electrical & Electronics Engineering**
   - *Institution:* Guru Gobind Singh Indraprastha University (GGSIPU), Delhi
   - *Duration:* 2014 – 2018
+  - *Aggregate:* 74.24%
 
 ---
 
 ## PROFESSIONAL RECOGNITIONS & ACHIEVEMENTS
 - **Award:** Employee of the Month (July, 2022)
 - **Context:** Commended at C-DAC Pune for exceptional dedication, rapid technical delivery, and architectural contribution towards core infrastructure deployment workflows.
+
+---
 
 ## HOBBIES
 - Chess
